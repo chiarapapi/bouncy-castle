@@ -1,0 +1,5 @@
+getwd()
+dir.create(paste(getwd(), "scRNAseq_data", sep = "/"))
+dir.create(paste(getwd(), "RNAseq_data", sep = "/"))
+file.copy(from = "~/Downloads/ra100k.R1.fastq", to= "/Users/chiarapapi/Desktop/bouncy-castle/RNAseq_data")
+file.copy(from = "~/Downloads/scRNAseq_example/", to= "/Users/chiarapapi/Desktop/bouncy-castle/scRNAseq_data")
