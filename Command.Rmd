@@ -1,0 +1,37 @@
+---
+title: "README"
+author: "Chiara Papi"
+date: '2022-03-31'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## FastQC
+
+FastqQC was installed locally and we can run it or interactively or through shell command line. We use the terminal: - Place yourself in the directory where the data are located
+
+```{bash echo=FALSE}
+cd Desktop/bouncy-castle/RNAseq_data
+fastqc ra100k.R1.fastq.gz
+cd scRNAseq_example
+fastqc fastqc sample1100k_S1_L001_R2_001.fastq.gz
+
+```
+
+##MultiQC 
+We can use MultiQC locally or through a docker container. Since it's a Phyton software we use docker to be able to run the software (https://multiqc.info/docs/#using-the-docker-container). Firstly, open Docker locally. Place yourself in the directory where the data are located
+
+```{bash}
+cd Desktop/bouncy-castle/dataset1
+pwd
+docker run -t -v `pwd`:`pwd` -w `pwd` ewels/multiqc
+```
+
+ docker run is the thing needed to execute docker locally. 
+- t : simply make it interactive. Instead of using docker log (used when docker is running in background). Using -t the docker run at the time you start and you see what is actually happening. 
+- v: it means that we are creating a connection between your hardware (your disc) and the docker object. Docker is a box, is detached by your physical environment so it cannot access directly to the folder where are located your data. -v means that you are associating to the docker one of the folder on your computer. Because we don't put the file in the container, but it only contains the software that has to be put in contact with the data. 
+- w: is indicating what is the working directory in which you are executing your docker.
+Multiqc has as output a html file with the quality control analysis.
